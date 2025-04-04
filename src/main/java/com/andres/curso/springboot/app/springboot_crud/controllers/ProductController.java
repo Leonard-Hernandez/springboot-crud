@@ -49,17 +49,14 @@ public class ProductController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Product> update(@RequestBody Product product, @PathVariable Long id) {
-        Optional<Product> productDb = productServiceImpl.findById(id);
-
-        if (productDb.isPresent()) {
-            product.setId(productDb.get().getId());
-            return ResponseEntity.status(HttpStatus.CREATED).body(productServiceImpl.save(product));
+        Optional<Product> productOptional = productServiceImpl.update(id, product);
+        if (productOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(productOptional.get());
         }
         return ResponseEntity.notFound().build();
-
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         Optional<Product> productDb = productServiceImpl.findById(id);
 
