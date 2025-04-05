@@ -1,4 +1,4 @@
-package com.andres.curso.springboot.app;
+package com.andres.curso.springboot.app.springboot_crud;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
