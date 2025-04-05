@@ -1,12 +1,13 @@
 package com.andres.curso.springboot.app.springboot_crud.entities;
 
+import com.andres.curso.springboot.app.springboot_crud.validation.IsRequired;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -18,7 +19,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "{NotEmpty.product.name}")
+    @IsRequired
     @Size(min = 3, max = 30)
     private String name;
 
@@ -26,7 +27,7 @@ public class Product {
     @NotNull(message = "{NotNull.product.price}")
     private Double price;
 
-    @NotBlank(message = "{NotBlank.product.description}")
+    @IsRequired
     private String description;
     
     public Long getId() {

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.andres.curso.springboot.app.springboot_crud.ProductValidation;
 import com.andres.curso.springboot.app.springboot_crud.entities.Product;
 import com.andres.curso.springboot.app.springboot_crud.services.ProductServiceImpl;
 
@@ -31,8 +30,8 @@ public class ProductController {
     @Autowired
     private ProductServiceImpl productServiceImpl;
 
-    @Autowired
-    private ProductValidation validation;
+    // @Autowired
+    // private ProductValidation validation;
 
     @GetMapping
     public List<Product> list() {
@@ -53,7 +52,7 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<?> create(@Valid @RequestBody Product product, BindingResult result) {
-        validation.validate(product, result);
+        // validation.validate(product, result);
         if(result.hasFieldErrors()) {
             return validation(result);
         }
@@ -63,7 +62,7 @@ public class ProductController {
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @Valid @RequestBody Product product,
             BindingResult result) {
-        validation.validate(product, result);
+        // validation.validate(product, result);
         if (result.hasFieldErrors()) {
             return validation(result);
         }

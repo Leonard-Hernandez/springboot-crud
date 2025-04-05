@@ -1,4 +1,4 @@
-package com.andres.curso.springboot.app.springboot_crud;
+package com.andres.curso.springboot.app.springboot_crud.validation;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
