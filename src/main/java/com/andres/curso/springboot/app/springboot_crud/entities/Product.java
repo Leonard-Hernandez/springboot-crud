@@ -1,5 +1,6 @@
 package com.andres.curso.springboot.app.springboot_crud.entities;
 
+import com.andres.curso.springboot.app.springboot_crud.validation.IsExistsDb;
 import com.andres.curso.springboot.app.springboot_crud.validation.IsRequired;
 
 import jakarta.persistence.Entity;
@@ -20,6 +21,10 @@ public class Product {
     private Long id;
 
     @IsRequired
+    @IsExistsDb
+    private String sku;
+
+    @IsRequired
     @Size(min = 3, max = 30)
     private String name;
 
@@ -29,36 +34,50 @@ public class Product {
 
     @IsRequired
     private String description;
-    
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public Double getPrice() {
         return price;
     }
+
     public void setPrice(Double price) {
         this.price = price;
     }
+
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
+
     @Override
     public String toString() {
         return "{id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + "}";
     }
-
-    
 
 }
