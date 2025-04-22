@@ -13,10 +13,10 @@ import jakarta.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ExistByUsername {
 
-    String message() default "This username already exist in the data base";
+	String message() default "This username already exist in the data base";
 
-	Class<?>[] groups() default { };
+	Class<?>[] groups() default {};
 
-	Class<? extends Payload>[] payload() default { };
+	Class<? extends Payload>[] payload() default {};
 
 }

@@ -9,7 +9,7 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
 @Component
-public class ExistByUsernameValidation implements ConstraintValidator<ExistByUsername, String>{
+public class ExistByUsernameValidation implements ConstraintValidator<ExistByUsername, String> {
 
     @Autowired
     UserService userService;

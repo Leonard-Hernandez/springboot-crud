@@ -36,15 +36,14 @@ public class JpaUserDetailsService implements UserDetailsService {
         List<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 
-        return  new org.springframework.security.core.userdetails.User(
-                user.getUsername(), 
+        return new org.springframework.security.core.userdetails.User(
+                user.getUsername(),
                 user.getPassword(),
-                user.isEnable(), 
-                true, 
-                true, 
-                true, 
-                authorities
-            );
+                user.isEnable(),
+                true,
+                true,
+                true,
+                authorities);
     }
 
 }
