@@ -3,7 +3,6 @@ package com.andres.curso.springboot.app.springboot_crud.entities;
 import java.util.List;
 
 import com.andres.curso.springboot.app.springboot_crud.validation.ExistByUsername;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
