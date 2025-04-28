@@ -12,4 +12,6 @@ public class TokenJwtConfig {
 
     public static final String HEADER_AUTHORIZATION = "Authorization";
 
+    public static final String CONTEND_TYPE = "application/json";
+
 }

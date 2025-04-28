@@ -72,8 +72,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         Collection<? extends GrantedAuthority> roles = authResult.getAuthorities();
 
-        Claims claims = Jwts.claims().build();
-        claims.put("authorities", roles);
+        Claims claims = Jwts.claims()
+                .add("authorities", roles)
+                .build();
 
         String token = Jwts.builder()
                 .subject(username)
@@ -88,11 +89,25 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         Map<String, String> body = new HashMap<>();
         body.put("username", username);
         body.put("token", token);
-        body.put("message", String.format("Hola user %s has iniciado sesion con exito", username));
+        body.put("message", String.format("hi user %s you alredy login", username));
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
-        response.setContentType("application/json");
+        response.setContentType(CONTEND_TYPE);
         response.setStatus(200);
+
+    }
+
+    @Override
+    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response,
+            AuthenticationException failed) throws IOException, ServletException {
+
+        Map<String, String> body = new HashMap<>();
+        body.put("message", "Users or password incorrects");
+        body.put("error", failed.getMessage());
+
+        response.getWriter().write(new ObjectMapper().writeValueAsString(body));
+        response.setStatus(401);
+        response.setContentType(CONTEND_TYPE);
 
     }
 

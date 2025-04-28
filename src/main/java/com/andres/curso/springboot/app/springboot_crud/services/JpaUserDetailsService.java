@@ -33,6 +33,8 @@ public class JpaUserDetailsService implements UserDetailsService {
         }
         User user = userOptional.get();
 
+        System.out.println(username + " " + user.getPassword());
+
         List<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 
